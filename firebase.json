@@ -1,0 +1,11 @@
+{
+  "functions": {
+    "predeploy": [
+      "npm --prefix $Env:RESOURCE_DIR run lint"
+    ],
+    "source": "functions"
+  },
+  "database": {
+    "rules": "database.rules.json"
+  }
+}

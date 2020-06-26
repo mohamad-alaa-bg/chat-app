@@ -1,13 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart';
 
 class NewMessage extends StatefulWidget {
+
   @override
   _NewMessageState createState() => _NewMessageState();
 }
 
 class _NewMessageState extends State<NewMessage> {
+  final List<String> char = ['a','b','c','d'];
+  var isEnStart =true ;
+  var isEnEnd  = true;
   var _enterMessage = '';
   final _controller = new TextEditingController();
   void _sendMessage() async{
@@ -42,11 +47,25 @@ class _NewMessageState extends State<NewMessage> {
               textCapitalization: TextCapitalization.sentences,
               autocorrect: true,
               controller: _controller,
+              maxLines: null,
+             minLines: 1,
+
               textAlign: TextAlign.justify,
+              textDirection:isEnStart ? TextDirection.ltr: TextDirection.rtl,
+             // textAlign: isEnEnd ?TextAlign.left : TextAlign.right,
               decoration: InputDecoration(labelText: 'Send a message...'),
               onChanged: (value) {
+                String firstLetter = value.substring(0,1);
+                isEnStart = firstLetter.al;
                 setState(() {
                   _enterMessage = value;
+
+                //  isEnStart = isEnStart;
+                  //isEnEnd = isEnEnd;
+                  print(value[value.length -1 ]);
+                  print(isEnEnd);
+                  print(isEnStart);
+
                 });
               },
             ),

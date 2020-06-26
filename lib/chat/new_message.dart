@@ -51,20 +51,14 @@ class _NewMessageState extends State<NewMessage> {
              minLines: 1,
 
               textAlign: TextAlign.justify,
-              textDirection:isEnStart ? TextDirection.ltr: TextDirection.rtl,
+             // textDirection:isEnStart ? TextDirection.ltr: TextDirection.rtl,
              // textAlign: isEnEnd ?TextAlign.left : TextAlign.right,
               decoration: InputDecoration(labelText: 'Send a message...'),
               onChanged: (value) {
                 String firstLetter = value.substring(0,1);
-                isEnStart = firstLetter.al;
                 setState(() {
                   _enterMessage = value;
 
-                //  isEnStart = isEnStart;
-                  //isEnEnd = isEnEnd;
-                  print(value[value.length -1 ]);
-                  print(isEnEnd);
-                  print(isEnStart);
 
                 });
               },
